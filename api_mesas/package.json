@@ -1,0 +1,31 @@
+{
+  "name": "voto_electronico",
+  "version": "1.0.0",
+  "description": "Proyecto de tesis voto electronico en Chile",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "keywords": [
+    "voto",
+    "electronico"
+  ],
+  "author": "Ricardo Vargas",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "connect-multiparty": "^2.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "jwt-simple": "^0.5.6",
+    "moment": "^2.26.0",
+    "mongoose": "^5.9.18",
+    "mongoose-pagination": "^1.0.0",
+    "node-rsa": "^1.0.8",
+    "tokenpress": "^2.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}

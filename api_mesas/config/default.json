@@ -1,0 +1,4 @@
+{ 
+    "mongoURI": "mongodb://localhost:27017/votoelectronico_db",
+    "mongoURIpadron": "mongodb://localhost:27017/padronelectoral_db" 
+}

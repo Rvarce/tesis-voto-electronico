@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <title>Autenticación del Elector - Plataforma Mesa Receptora de Sufragios</title>
+    <link rel="stylesheet" href="stylesheets/bootstrap-min.css">
+    <link rel="stylesheet" href="stylesheets/app.css" type="text/css" />
+</head>
+<body>
+    <div id="Container">
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <div class="navbar-brand" href="#" style="color: white;">AUTENTICACIÓN DEL ELECTOR</div>
+            </div>                      
+          </div>
+        </nav>
+       <div id="Scores">
+           <h5>Calidad de la Captura : <input type="text" id="qualityInputBox" size="20" style="background-color:#DCDCDC;text-align:center;"></h5> 
+
+       </div>
+        <div id="content-capture" style="">    
+            <div id="status"></div>            
+            <div id="imagediv"></div>
+            <div id="contentButtons">
+                <table width=70% align="center">
+                    <tr>
+                      <td>
+                        <input type="button" class="btn btn-primary" id="start" value="Iniciar" onclick="Javascript:onStart()">
+                    </td>
+                    <td>
+                      <input type="button" class="btn btn-primary" id="stop" value="Detener" onclick="Javascript:onStop()">
+                   </td>
+                        <td>
+                            <input type="button" class="btn btn-primary" id="clearButton" value="Limpiar" onclick="Javascript:onClear()">
+                        </td>
+                </table>
+            </div>
+       
+            <div id="PadronData">
+              <form name="FormularioPadron" style ="border : solid rgb(255, 255, 255);padding:8px;">
+              <b>DATOS ELECTORALES</b><br>
+            <table class="table">
+              <tr><td>Número Correlativo</td><td>01</td></tr>
+              <tr><td>R.U.N.</td><td>18569470-4</td></tr>
+              <tr><td>Nombres</td><td>CHRISTOPHER ANDRÉS</td></tr>
+              <tr><td>Apellido Paterno</td><td>FONSECA</td></tr>
+              <tr><td>Apellido Materno</td><td>CARMONA</td></tr>
+              <tr><td>Habilitado para Sufragar</td><td>SÍ</td></tr>
+              </table>
+            </form>
+            <br>
+          </div> 
+
+            <div id="saveAndFormats">
+              <form name="myForm" style ="border : solid grey;padding:5px;">
+              <b>Formato:</b><br>
+              <table>
+                <tr data-toggle="tooltip">
+                  <td>
+              <input type="checkbox" name="Intermediate" value="2" onclick="checkOnly(this)" > Feature Set<br>
+                  </td>
+                </tr>
+                <tr data-toggle="tooltip">
+                  <td>
+              <input type="checkbox" name="PngImage" checked="true" value="4" onclick="checkOnly(this)" > PNG
+                  </td>
+                </tr>
+              </table>
+              </form>
+              <br>
+             <input type="button" class="btn btn-primary" id="saveImagePng" value="Exportar" onclick="Javascript:onImageDownload()">
+            </div>
+
+        </div>
+        
+        <div id="content-reader">  
+            <h4>Seleccionar Lector :</h4>
+            <select class="form-control" id="readersDropDown" onchange="selectChangeEvent()">
+            </select>
+            <div id="readerDivButtons">
+                <table width=70% align="center">
+                        <tr>
+                            <td>
+                                <input type="button" class="btn btn-primary" id="refreshList" value="Actualizar Lista" 
+                                    onclick="Javascript:readersDropDownPopulate(false)">
+                            </td>
+                            <td>
+                                <input type="button" class="btn btn-primary" id="capabilities" value="Iniciar"
+                                data-toggle="modal" data-target="#myModal" onclick="Javascript:location.reload()">
+                            </td>  
+                        </tr>
+                </table>
+                 
+            </div>
+        </div>
+
+</div>
+
+    <script src="javascripts/jquery.min.js"></script> 
+    <script src="stylesheets/bootstrap.min.js"></script>
+    <script src="javascripts/es6-shim.js"></script>
+    <script src="javascripts/websdk.client.bundle.min.js"></script>
+    <script src="javascripts/fingerprint.sdk.min.js"></script>
+    <script src="javascripts/app.js"></script>
+        
+</body>
+</html>

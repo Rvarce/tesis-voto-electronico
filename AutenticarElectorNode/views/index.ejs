@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Autenticación del Elector - Plataforma Mesa Receptora de Sufragios</title>
+  <link rel="stylesheet" href="stylesheets/bootstrap-min.css">
+  <link rel="stylesheet" href="stylesheets/app.css" type="text/css" />
+</head>
+
+<body>
+  <div id="Container">
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <div class="navbar-brand" href="#" style="color: white;">AUTENTICACIÓN DEL ELECTOR</div>
+        </div>
+      </div>
+    </nav>
+    <div id="Scores">
+      <h5>Calidad de la Captura : <input type="text" id="qualityInputBox" size="20"
+          style="background-color:#DCDCDC;text-align:center;"></h5>
+
+    </div>
+    <div id="content-capture">
+      <form action="/aceptar" method="post">
+        <div id="status"></div>
+        <div id="imagediv">
+          <img src="<% if (elector) { %>
+            data:image/png;base64,
+            <%= elector.huellaImagen %>
+            <% } %>" alt="">
+        </div>
+        <div id="contentButtons">
+          <table width=70% align="center">
+            <tr>
+              <td>
+                <input type="button" class="btn btn-primary" id="start" value="Iniciar" style="display: block;"
+                  onclick="Javascript:onStart()">
+                <input type="submit" class="btn btn-primary" id="submit" value="Verificar" style="display: block;">
+              </td>
+              <td>
+                <input type="button" class="btn btn-primary" id="stop" value="Detener" onclick="Javascript:onStop()">
+              </td>
+              <td>
+                <input type="button" class="btn btn-primary" id="clearButton" value="Limpiar"
+                  onclick="Javascript:onClear()">
+              </td>
+              <td>
+                <a class="btn btn-primary" href="http://192.168.0.17:8080">Volver</a>
+              </td>
+          </table>
+        </div>
+      </form>
+
+      <div id="PadronData">
+        <form name="FormularioPadron" style="border : solid rgb(255, 255, 255);padding:8px;">
+          <b>DATOS ELECTORALES</b><br>
+          <!-- <table class="table">
+            <tr>
+              <td>Número Correlativo</td>
+              <td>01</td>
+            </tr>
+            <tr>
+              <td>R.U.N.</td>
+              <td>18569470-4</td>
+            </tr>
+            <tr>
+              <td>Nombres</td>
+              <td>CHRISTOPHER ANDRÉS</td>
+            </tr>
+            <tr>
+              <td>Apellido Paterno</td>
+              <td>FONSECA</td>
+            </tr>
+            <tr>
+              <td>Apellido Materno</td>
+              <td>CARMONA</td>
+            </tr>
+            <tr>
+              <td>Habilitado para Sufragar</td>
+              <td>SÍ</td>
+            </tr>
+          </table> -->
+          <table class="table">
+            <tr>
+              <td>Número Correlativo</td>
+              <td><% if (elector) { %>
+                <%= elector.correlativo %>
+                <% } %></td>
+            </tr>
+            <tr>
+              <td>R.U.N.</td>
+              <td><% if (elector) { %>
+                <%= elector.identificacionNacional %>
+                <% } %></td>
+            </tr>
+            <tr>
+              <td>Nombres</td>
+              <td><% if (elector) { %>
+                <%= elector.nombre %>
+                <% } %></td>
+            </tr>
+            </tr>
+            <tr>
+              <td>Apellido Paterno</td>
+              <td><% if (elector) { %>
+                <%= elector.apellidoPat %>
+                <% } %></td>
+            </tr>
+            </tr>
+            <tr>
+              <td>Apellido Materno</td>
+              <td><% if (elector) { %>
+                <%= elector.apellidoMat %>
+                <% } %></td>
+            </tr>
+            <tr>
+              <td>Habilitado para Sufragar</td>
+              <td><% if(elector){
+                  if (elector.estado == true) { %>
+                Si
+                <% }else {%>
+                No
+              <% }} %></td>
+            </tr>
+          </table>
+        </form>
+        <br>
+      </div>
+
+      <div id="saveAndFormats">
+        <form name="myForm">
+          <table>
+            <tr data-toggle="tooltip">
+              <td>
+                <input type="hidden" name="Intermediate" value="2" checked><br>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+
+    </div>
+
+    <div id="content-reader">
+      <h4>Seleccionar Lector :</h4>
+      <select class="form-control" id="readersDropDown" onchange="selectChangeEvent()">
+      </select>
+      <div id="readerDivButtons">
+        <table width=70% align="center">
+          <tr>
+            <td>
+              <input type="button" class="btn btn-primary" id="refreshList" value="Actualizar Lista"
+                onclick="Javascript:readersDropDownPopulate(false)">
+            </td>
+            <td>
+              <input type="button" class="btn btn-primary" id="capabilities" value="Iniciar" data-toggle="modal"
+                data-target="#myModal" onclick="Javascript:location.reload()">
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="javascripts/jquery.min.js"></script>
+  <script src="stylesheets/bootstrap.min.js"></script>
+  <script src="javascripts/es6-shim.js"></script>
+  <script src="javascripts/websdk.client.bundle.min.js"></script>
+  <script src="javascripts/fingerprint.sdk.min.js"></script>
+  <script src="javascripts/app.js"></script>
+
+</body>
+
+</html>

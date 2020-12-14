@@ -1,0 +1,23 @@
+{
+  "name": "autenticarelectornode",
+  "version": "1.0.0",
+  "description": "microservicio para autenticar elector",
+  "main": "server.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "Ricardo",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "ejs": "^3.1.3",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
